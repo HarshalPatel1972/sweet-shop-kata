@@ -7,6 +7,7 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 ## Tech Stack
 
 ### Backend
+
 - **Runtime**: Node.js
 - **Language**: TypeScript
 - **Framework**: Express.js
@@ -15,6 +16,7 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 - **Testing**: Jest + Supertest
 
 ### Frontend
+
 - **Framework**: React (coming soon)
 - **HTTP Client**: Axios
 - **Styling**: CSS/Tailwind (TBD)
@@ -22,12 +24,14 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 ## Project Status
 
 ### ✅ Completed
+
 - [x] Project initialization with TypeScript, Express, Jest
 - [x] Database setup (Prisma + SQLite)
 - [x] User registration endpoint with password hashing
 - [x] Integration testing infrastructure
 
 ### 🚧 In Progress
+
 - [ ] User login with JWT token generation
 - [ ] Sweet CRUD operations
 - [ ] Search and filter functionality
@@ -36,6 +40,7 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 - [ ] React frontend
 
 ### 📋 To Do
+
 - [ ] Comprehensive error handling
 - [ ] Input validation and sanitization
 - [ ] API documentation
@@ -46,6 +51,7 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 ## Setup Instructions
 
 ### Prerequisites
+
 - Node.js (v16 or later)
 - npm or yarn
 - Git
@@ -53,23 +59,27 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/sweet-shop-kata.git
    cd sweet-shop-kata
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    # Copy the example env file
    cp .env.example .env
    ```
-   
+
    Update `.env` with your settings:
+
    ```
    NODE_ENV=development
    DATABASE_URL="file:./dev.db"
@@ -78,11 +88,13 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
    ```
 
 4. **Set up the database**
+
    ```bash
    npx prisma migrate dev --name init
    ```
 
 5. **Run tests**
+
    ```bash
    npm test
    ```
@@ -99,10 +111,12 @@ The API will be running at `http://localhost:3000`
 ## API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` — Register a new user
 - `POST /api/auth/login` — Login and receive JWT token (coming soon)
 
 ### Sweets (Protected)
+
 - `GET /api/sweets` — Get all sweets (coming soon)
 - `POST /api/sweets` — Add a new sweet (Admin only, coming soon)
 - `GET /api/sweets/search` — Search sweets (coming soon)
@@ -110,6 +124,7 @@ The API will be running at `http://localhost:3000`
 - `DELETE /api/sweets/:id` — Delete a sweet (Admin only, coming soon)
 
 ### Inventory (Protected)
+
 - `POST /api/sweets/:id/purchase` — Purchase a sweet (coming soon)
 - `POST /api/sweets/:id/restock` — Restock a sweet (Admin only, coming soon)
 
@@ -118,16 +133,19 @@ The API will be running at `http://localhost:3000`
 ## Testing
 
 Run the test suite:
+
 ```bash
 npm test
 ```
 
 Run tests in watch mode:
+
 ```bash
 npm test -- --watch
 ```
 
 Current test coverage:
+
 - Registration endpoint: ✅ Complete
 - Login endpoint: 🚧 In progress
 - Sweet operations: 📋 Planned
@@ -149,19 +167,23 @@ Each feature is developed incrementally with clear git commits documenting the j
 ## My AI Usage
 
 ### Tools Used
+
 - **GitHub Copilot** — AI assistant for code suggestions and guidance
 
 ### How I Used AI
 
 1. **Project Setup & Configuration**
+
    - Used Copilot to suggest TypeScript, Jest, and Prisma configurations
    - Generated initial boilerplate for middleware and route structure
 
 2. **Test Case Design**
+
    - Brainstormed test scenarios with Copilot to ensure comprehensive coverage
    - Discussed security best practices (e.g., why passwords shouldn't be in responses)
 
 3. **Implementation Guidance**
+
    - Asked Copilot for patterns on service/controller separation
    - Reviewed suggestions for bcryptjs integration
    - Validated error handling patterns
@@ -174,12 +196,14 @@ Each feature is developed incrementally with clear git commits documenting the j
 ### My Reflection
 
 AI was invaluable for:
+
 - **Accelerating boilerplate creation** (config, setup, folder structure)
 - **Validating architectural decisions** (service/controller/router pattern)
 - **Ensuring security practices** (password hashing, no password in responses)
 - **Speed without sacrificing quality** — AI suggestions were reviewed, not blindly accepted
 
 AI did NOT:
+
 - Make core decisions (I decided the architecture)
 - Replace my thinking (I validated every suggestion)
 - Hide my ownership (clearly documented in commits)
@@ -219,6 +243,7 @@ sweet-shop-kata/
 ## Git Commit Strategy
 
 Commits follow this naming convention:
+
 - `chore:` — Setup, config, tooling
 - `test:` — Test additions or test-related changes
 - `feat:` — New features
@@ -226,6 +251,7 @@ Commits follow this naming convention:
 - `fix:` — Bug fixes
 
 Each commit with AI assistance includes:
+
 ```
 Co-authored-by: GitHub Copilot <copilot@github.com>
 ```
@@ -252,6 +278,7 @@ This project is created as part of the Incubyte Software Craftsman Internship as
 ## Questions & Discussion
 
 This project demonstrates:
+
 - ✅ TDD discipline (Red → Green → Refactor)
 - ✅ Clean code principles (SOLID, separation of concerns)
 - ✅ Transparent AI usage (documented and co-authored)

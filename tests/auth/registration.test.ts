@@ -5,6 +5,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 describe("User Registration", () => {
+  beforeEach(async () => {
+    // Clean database before each test
+    await prisma.user.deleteMany({});
+  });
+
   afterEach(async () => {
     // Clean up users after each test
     await prisma.user.deleteMany({});
