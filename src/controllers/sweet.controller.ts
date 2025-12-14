@@ -154,3 +154,46 @@ export async function deleteSweet(req: Request, res: Response): Promise<void> {
     }
   }
 }
+
+/**
+ * Search and filter sweets
+ */
+export async function searchSweets(req: Request, res: Response): Promise<void> {
+  try {
+    const { name, minPrice, maxPrice, minQty, maxQty } = req.query;
+
+    // Validate numeric filters
+    if (minPrice !== undefined && isNaN(Number(minPrice))) {
+      res.status(400).json({ error: "minPrice must be a number" });
+      return;
+    }
+
+    if (maxPrice !== undefined && isNaN(Number(maxPrice))) {
+      res.status(400).json({ error: "maxPrice must be a number" });
+      return;
+    }
+
+    if (minQty !== undefined && isNaN(Number(minQty))) {
+      res.status(400).json({ error: "minQty must be a number" });
+      return;
+    }
+
+    if (maxQty !== undefined && isNaN(Number(maxQty))) {
+      res.status(400).json({ error: "maxQty must be a number" });
+      return;
+    }
+
+    const filters: sweetService.SearchSweetsInput = {
+      name: name as string | undefined,
+      minPrice: minPrice ? Number(minPrice) : undefined,
+      maxPrice: maxPrice ? Number(maxPrice) : undefined,
+      minQty: minQty ? Number(minQty) : undefined,
+      maxQty: maxQty ? Number(maxQty) : undefined,
+    };
+
+    const sweets = await sweetService.searchSweets(filters);
+    res.status(200).json(sweets);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to search sweets" });
+  }
+}
