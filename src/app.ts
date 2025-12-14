@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./routes/auth.router";
+import sweetsRouter from "./routes/sweets.router";
 
 const app = express();
 
@@ -12,5 +13,8 @@ app.get("/health", (req, res) => {
 
 // Auth routes
 app.use("/api/auth", authRouter);
+
+// Sweets routes (protected)
+app.use("/api/sweets", sweetsRouter);
 
 export default app;

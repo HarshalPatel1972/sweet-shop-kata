@@ -1,22 +1,20 @@
 import request from "supertest";
 import app from "../../src/app";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma, cleanDatabase } from "../helpers/prisma";
 
 describe("User Registration", () => {
   beforeEach(async () => {
     // Clean database before each test
-    await prisma.user.deleteMany({});
+    await cleanDatabase();
   });
 
   afterEach(async () => {
     // Clean up users after each test
-    await prisma.user.deleteMany({});
+    await cleanDatabase();
   });
 
   afterAll(async () => {
-    await prisma.$disconnect();
+    // Keep connection open for other tests
   });
 
   it("POST /api/auth/register returns 201 and creates a user with hashed password", async () => {

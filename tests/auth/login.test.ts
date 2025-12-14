@@ -1,15 +1,13 @@
 import request from "supertest";
 import app from "../../src/app";
-import { PrismaClient } from "@prisma/client";
+import { prisma, cleanDatabase } from "../helpers/prisma";
 import bcrypt from "bcryptjs";
-
-const prisma = new PrismaClient();
 
 describe("User Login", () => {
   beforeEach(async () => {
     // Clean database before each test
-    await prisma.user.deleteMany({});
-    
+    await cleanDatabase();
+
     // Create a test user for login tests
     const hashedPassword = await bcrypt.hash("TestPassword123!", 10);
     await prisma.user.create({
@@ -23,11 +21,11 @@ describe("User Login", () => {
 
   afterEach(async () => {
     // Clean up users after each test
-    await prisma.user.deleteMany({});
+    await cleanDatabase();
   });
 
   afterAll(async () => {
-    await prisma.$disconnect();
+    // Keep connection open for other tests
   });
 
   it("POST /api/auth/login returns 200 with JWT token for valid credentials", async () => {
