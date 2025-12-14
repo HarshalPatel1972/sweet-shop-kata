@@ -91,7 +91,12 @@ export async function updateSweet(req: Request, res: Response): Promise<void> {
     const { name, price, quantity, description } = req.body;
 
     // Validate at least one field is provided
-    if (!name && price === undefined && quantity === undefined && !description) {
+    if (
+      !name &&
+      price === undefined &&
+      quantity === undefined &&
+      !description
+    ) {
       res.status(400).json({
         error: "At least one field must be provided for update",
       });
