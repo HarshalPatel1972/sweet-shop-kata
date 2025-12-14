@@ -27,4 +27,16 @@ model Sweet {
   description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  purchases   Purchase[]
+}
+
+model Purchase {
+  id           Int     @id @default(autoincrement())
+  sweetId      Int
+  sweet        Sweet   @relation(fields: [sweetId], references: [id])
+  quantity     Int
+  customerName String
+  totalPrice   Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

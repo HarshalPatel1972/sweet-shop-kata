@@ -1,6 +1,7 @@
 import express from "express";
 import authRouter from "./routes/auth.router";
 import sweetsRouter from "./routes/sweets.router";
+import purchasesRouter from "./routes/purchases.router";
 
 const app = express();
 
@@ -16,5 +17,8 @@ app.use("/api/auth", authRouter);
 
 // Sweets routes (protected)
 app.use("/api/sweets", sweetsRouter);
+
+// Purchases routes (protected)
+app.use("/api/purchases", purchasesRouter);
 
 export default app;
