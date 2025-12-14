@@ -135,7 +135,7 @@ export async function searchSweets(filters: SearchSweetsInput) {
   // (SQLite doesn't support case-insensitive mode in Prisma)
   if (filters.name) {
     const nameLower = filters.name.toLowerCase();
-    return results.filter(sweet =>
+    return results.filter((sweet) =>
       sweet.name.toLowerCase().includes(nameLower)
     );
   }
