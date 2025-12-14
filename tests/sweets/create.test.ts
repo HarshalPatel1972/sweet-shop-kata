@@ -36,10 +36,7 @@ describe("Create Sweet", () => {
     );
 
     // Create regular user
-    const userPassword = await require("bcryptjs").hash(
-      "UserPassword123!",
-      10
-    );
+    const userPassword = await require("bcryptjs").hash("UserPassword123!", 10);
     const regularUser = await prisma.user.create({
       data: {
         email: `user-create-${testId}@example.com`,
