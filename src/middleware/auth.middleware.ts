@@ -27,9 +27,11 @@ function extractToken(authHeader: string | undefined): string | null {
  * @returns Decoded user data
  * @throws Error if token is invalid or expired
  */
-function verifyToken(
-  token: string
-): { id: number; email: string; role: string } {
+function verifyToken(token: string): {
+  id: number;
+  email: string;
+  role: string;
+} {
   return jwt.verify(token, JWT_SECRET) as {
     id: number;
     email: string;

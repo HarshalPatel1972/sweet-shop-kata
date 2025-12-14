@@ -7,4 +7,5 @@ module.exports = {
   collectCoverageFrom: ["src/**/*.ts", "!src/**/*.d.ts", "!src/server.ts"],
   setupFilesAfterEnv: ["<rootDir>/tests/setup.ts"],
   testTimeout: 10000,
+  maxWorkers: 1, // Run tests sequentially to avoid database conflicts
 };

@@ -4,6 +4,8 @@ import { prisma, cleanDatabase } from "../helpers/prisma";
 import bcrypt from "bcryptjs";
 
 describe("User Login", () => {
+  const testId = Date.now(); // Unique identifier for this test suite
+
   beforeEach(async () => {
     // Clean database before each test
     await cleanDatabase();
@@ -12,7 +14,7 @@ describe("User Login", () => {
     const hashedPassword = await bcrypt.hash("TestPassword123!", 10);
     await prisma.user.create({
       data: {
-        email: "test@example.com",
+        email: `test-login-${testId}@example.com`,
         password: hashedPassword,
         role: "User",
       },
@@ -30,7 +32,7 @@ describe("User Login", () => {
 
   it("POST /api/auth/login returns 200 with JWT token for valid credentials", async () => {
     const payload = {
-      email: "test@example.com",
+      email: `test-login-${testId}@example.com`,
       password: "TestPassword123!",
     };
 
@@ -55,7 +57,7 @@ describe("User Login", () => {
 
   it("POST /api/auth/login returns 401 for incorrect password", async () => {
     const payload = {
-      email: "test@example.com",
+      email: `test-login-${testId}@example.com`,
       password: "WrongPassword123!",
     };
 

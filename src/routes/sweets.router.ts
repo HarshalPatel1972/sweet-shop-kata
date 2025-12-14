@@ -1,23 +1,37 @@
 import { Router, Request, Response } from "express";
 import { authMiddleware, adminMiddleware } from "../middleware/auth.middleware";
+import * as sweetController from "../controllers/sweet.controller";
 
 const sweetsRouter = Router();
 
+// POST /api/sweets - Create a new sweet (admin only)
+sweetsRouter.post(
+  "/",
+  authMiddleware,
+  adminMiddleware,
+  sweetController.createSweet
+);
+
 // GET /api/sweets - List all sweets (protected)
-sweetsRouter.get("/", authMiddleware, (req: Request, res: Response) => {
-  // For now, return empty list
-  res.json([]);
-});
+sweetsRouter.get("/", authMiddleware, sweetController.getSweets);
+
+// GET /api/sweets/:id - Get a specific sweet (protected)
+sweetsRouter.get("/:id", authMiddleware, sweetController.getSweetById);
+
+// PUT /api/sweets/:id - Update a sweet (admin only)
+sweetsRouter.put(
+  "/:id",
+  authMiddleware,
+  adminMiddleware,
+  sweetController.updateSweet
+);
 
 // DELETE /api/sweets/:id - Delete a sweet (admin only)
 sweetsRouter.delete(
   "/:id",
   authMiddleware,
   adminMiddleware,
-  (req: Request, res: Response) => {
-    // For now, return 404 (sweet doesn't exist)
-    res.status(404).json({ error: "Sweet not found" });
-  }
+  sweetController.deleteSweet
 );
 
 export default sweetsRouter;
