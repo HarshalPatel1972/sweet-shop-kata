@@ -9,18 +9,33 @@ const app = express();
 
 app.use(express.json());
 
-// CORS configuration
+// Allowed origins for CORS
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://sweet-shop-frontend-three.vercel.app",
+  "https://sweet-shop-frontend-0.vercel.app",
+];
+
+// CORS configuration with dynamic origin checking
 app.use(
   cors({
-    origin: [
-      "https://sweet-shop-frontend-three.vercel.app",
-      "https://sweet-shop-frontend-0.vercel.app",
-      "http://localhost:5173",
-      "http://localhost:3000",
-    ],
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like Postman or mobile apps)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
+
+// Allow preflight requests (OPTIONS)
+app.options("*", cors());
 
 // Health check endpoint
 app.get("/health", (req, res) => {
