@@ -29,7 +29,6 @@ const corsOptions: cors.CorsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 
 // Health check endpoint
 app.get("/health", (req, res) => {
