@@ -9,8 +9,8 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 **Full Stack Application (Backend + Frontend):**
 
 - **Frontend:** https://sweet-shop-frontend-three.vercel.app/
-- **Backend API:** https://sweet-shop-api-prod.railway.app
-- **API Base URL:** https://sweet-shop-api-prod.railway.app/api
+- **Backend API:** https://sweet-shop-kata-production.up.railway.app
+- **API Base URL:** https://sweet-shop-kata-production.up.railway.app/api
 
 **Test Credentials:**
 
@@ -33,7 +33,7 @@ Password: SecurePass123
 ### Base URL
 
 ```
-https://sweet-shop-api-prod.railway.app/api
+https://sweet-shop-kata-production.up.railway.app/api
 ```
 
 ### Authentication Endpoints
@@ -76,13 +76,13 @@ GET    /restocks/:id        - Get restock by ID
 **Search Sweets:**
 
 ```bash
-curl "https://sweet-shop-api-prod.railway.app/api/sweets/search?q=chocolate"
+curl "https://sweet-shop-kata-production.up.railway.app/api/sweets/search?q=chocolate"
 ```
 
 **Create Purchase:**
 
 ```bash
-curl -X POST "https://sweet-shop-api-prod.railway.app/api/purchases" \
+curl -X POST "https://sweet-shop-kata-production.up.railway.app/api/purchases" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"sweetId": 1, "quantity": 5, "customerName": "John"}'
