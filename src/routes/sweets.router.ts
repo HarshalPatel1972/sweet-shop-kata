@@ -12,6 +12,9 @@ sweetsRouter.post(
   sweetController.createSweet
 );
 
+// GET /api/sweets/search - Search and filter sweets (protected)
+sweetsRouter.get("/search", authMiddleware, sweetController.searchSweets);
+
 // GET /api/sweets - List all sweets (protected)
 sweetsRouter.get("/", authMiddleware, sweetController.getSweets);
 

@@ -87,3 +87,58 @@ export async function deleteSweet(id: number) {
     throw error;
   }
 }
+
+export interface SearchSweetsInput {
+  name?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  minQty?: number;
+  maxQty?: number;
+}
+
+/**
+ * Search and filter sweets based on criteria
+ * @param filters - Search filters for name, price range, and quantity range
+ */
+export async function searchSweets(filters: SearchSweetsInput) {
+  const where: any = {};
+
+  // For numeric filters only initially
+  // Add price range filter
+  if (filters.minPrice !== undefined || filters.maxPrice !== undefined) {
+    where.price = {};
+    if (filters.minPrice !== undefined) {
+      where.price.gte = filters.minPrice;
+    }
+    if (filters.maxPrice !== undefined) {
+      where.price.lte = filters.maxPrice;
+    }
+  }
+
+  // Add quantity range filter
+  if (filters.minQty !== undefined || filters.maxQty !== undefined) {
+    where.quantity = {};
+    if (filters.minQty !== undefined) {
+      where.quantity.gte = filters.minQty;
+    }
+    if (filters.maxQty !== undefined) {
+      where.quantity.lte = filters.maxQty;
+    }
+  }
+
+  // Get all results matching numeric filters
+  const results = await prisma.sweet.findMany({
+    where,
+  });
+
+  // Apply case-insensitive name filtering in JavaScript
+  // (SQLite doesn't support case-insensitive mode in Prisma)
+  if (filters.name) {
+    const nameLower = filters.name.toLowerCase();
+    return results.filter((sweet) =>
+      sweet.name.toLowerCase().includes(nameLower)
+    );
+  }
+
+  return results;
+}

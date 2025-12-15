@@ -28,6 +28,7 @@ model Sweet {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   purchases   Purchase[]
+  restocks    Restock[]
 }
 
 model Purchase {
@@ -37,6 +38,17 @@ model Purchase {
   quantity     Int
   customerName String
   totalPrice   Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Restock {
+  id           Int     @id @default(autoincrement())
+  sweetId      Int
+  sweet        Sweet   @relation(fields: [sweetId], references: [id])
+  quantity     Int
+  restockDate  String
+  notes        String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
