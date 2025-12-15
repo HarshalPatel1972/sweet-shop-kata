@@ -31,11 +31,13 @@ Password: SecurePass123
 ## 📡 API Endpoints
 
 ### Base URL
+
 ```
 https://sweet-shop-api-prod.railway.app/api
 ```
 
 ### Authentication Endpoints
+
 ```
 POST   /auth/register       - Register new user
 POST   /auth/login          - Login user (returns JWT token)
@@ -43,6 +45,7 @@ GET    /auth/health         - Health check
 ```
 
 ### Sweet Management Endpoints
+
 ```
 GET    /sweets              - Get all sweets
 GET    /sweets/search       - Search sweets by name/description
@@ -53,6 +56,7 @@ DELETE /sweets/:id          - Delete sweet (Admin only)
 ```
 
 ### Purchase Endpoints
+
 ```
 GET    /purchases           - Get all purchases
 POST   /purchases           - Create new purchase
@@ -60,6 +64,7 @@ GET    /purchases/:id       - Get purchase by ID
 ```
 
 ### Restock Endpoints
+
 ```
 GET    /restocks            - Get all restocks
 POST   /restocks            - Create restock
@@ -69,11 +74,13 @@ GET    /restocks/:id        - Get restock by ID
 ### Example API Calls
 
 **Search Sweets:**
+
 ```bash
 curl "https://sweet-shop-api-prod.railway.app/api/sweets/search?q=chocolate"
 ```
 
 **Create Purchase:**
+
 ```bash
 curl -X POST "https://sweet-shop-api-prod.railway.app/api/purchases" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
