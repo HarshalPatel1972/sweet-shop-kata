@@ -17,6 +17,7 @@
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.2",
     "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "eslint": "^9.39.2",
     "express": "^5.2.1",
