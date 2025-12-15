@@ -35,7 +35,7 @@ app.use(
 );
 
 // Allow preflight requests (OPTIONS)
-app.options("*", cors());
+app.options("/:path*", cors());
 
 // Health check endpoint
 app.get("/health", (req, res) => {
