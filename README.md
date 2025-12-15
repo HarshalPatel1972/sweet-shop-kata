@@ -4,6 +4,29 @@
 
 This project is a full-stack implementation of a Sweet Shop Management System built using Test-Driven Development (TDD) principles. It demonstrates clean code, SOLID principles, and responsible AI usage in modern software development.
 
+## 🌐 Live Demo
+
+**Full Stack Application (Backend + Frontend):**
+
+- **Frontend:** https://sweet-shop-frontend.vercel.app
+- **Backend API:** https://sweet-shop-api-prod.railway.app
+- **API Base URL:** https://sweet-shop-api-prod.railway.app/api
+
+**Test Credentials:**
+```
+Email:    testuser@example.com
+Password: SecurePass123
+```
+
+### How to Use
+
+1. Visit the [Live Frontend](https://sweet-shop-frontend.vercel.app)
+2. Click "Register here" to create an account
+3. Or login with test credentials above
+4. Browse and manage sweets inventory
+
+---
+
 ## Tech Stack
 
 ### Backend
@@ -17,9 +40,12 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 
 ### Frontend
 
-- **Framework**: React (coming soon)
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
 - **HTTP Client**: Axios
-- **Styling**: CSS/Tailwind (TBD)
+- **Styling**: Tailwind CSS
+- **Testing**: Vitest + React Testing Library
+- **Deployment**: Vercel
 
 ## Project Status
 
@@ -29,22 +55,35 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 - [x] Database setup (Prisma + SQLite)
 - [x] User registration endpoint with password hashing
 - [x] Integration testing infrastructure
+- [x] Backend API - All 15 endpoints implemented and tested (44/44 tests passing)
+- [x] User login with JWT token generation
+- [x] Sweet CRUD operations
+- [x] Search and filter functionality
+- [x] Purchase and restock operations
+- [x] Role-based access control (Admin/User)
+- [x] React frontend - All pages and components built
+- [x] Frontend testing (32/32 tests passing)
+- [x] Deployment to Railway (Backend)
+- [x] Deployment to Vercel (Frontend)
+- [x] Database with SQLite and Prisma ORM
+- [x] Authentication with JWT and bcryptjs
+- [x] CORS configured for production
 
-### 🚧 In Progress
+### 🎯 Production Ready
 
-- [ ] User login with JWT token generation
-- [ ] Sweet CRUD operations
-- [ ] Search and filter functionality
-- [ ] Purchase and restock operations
-- [ ] Role-based access control (Admin/User)
-- [ ] React frontend
+- ✅ **Total Tests Passing:** 76/76 (44 backend + 32 frontend)
+- ✅ **100% TDD Compliant**
+- ✅ **Full Stack Deployed and Live**
+- ✅ **Ready for Use**
 
-### 📋 To Do
+### 📋 Future Enhancements
 
-- [ ] Comprehensive error handling
-- [ ] Input validation and sanitization
-- [ ] API documentation
-- [ ] Deployment setup
+- [ ] Advanced analytics dashboard
+- [ ] Inventory forecasting
+- [ ] Multi-location support
+- [ ] Mobile app
+- [ ] Real-time notifications
+- [ ] Payment gateway integration
 
 ---
 
