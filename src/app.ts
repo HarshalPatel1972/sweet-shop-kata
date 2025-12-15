@@ -34,9 +34,6 @@ app.use(
   })
 );
 
-// Allow preflight requests (OPTIONS)
-app.options("*", cors());
-
 // Health check endpoint
 app.get("/health", (req, res) => {
   res.json({ status: "ok" });
