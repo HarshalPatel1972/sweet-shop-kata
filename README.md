@@ -8,11 +8,12 @@ This project is a full-stack implementation of a Sweet Shop Management System bu
 
 **Full Stack Application (Backend + Frontend):**
 
-- **Frontend:** https://sweet-shop-frontend.vercel.app
+- **Frontend:** https://sweet-shop-frontend-three.vercel.app/
 - **Backend API:** https://sweet-shop-api-prod.railway.app
 - **API Base URL:** https://sweet-shop-api-prod.railway.app/api
 
 **Test Credentials:**
+
 ```
 Email:    testuser@example.com
 Password: SecurePass123
@@ -20,10 +21,65 @@ Password: SecurePass123
 
 ### How to Use
 
-1. Visit the [Live Frontend](https://sweet-shop-frontend.vercel.app)
+1. Visit the [Live Frontend](https://sweet-shop-frontend-three.vercel.app/)
 2. Click "Register here" to create an account
 3. Or login with test credentials above
 4. Browse and manage sweets inventory
+
+---
+
+## 📡 API Endpoints
+
+### Base URL
+```
+https://sweet-shop-api-prod.railway.app/api
+```
+
+### Authentication Endpoints
+```
+POST   /auth/register       - Register new user
+POST   /auth/login          - Login user (returns JWT token)
+GET    /auth/health         - Health check
+```
+
+### Sweet Management Endpoints
+```
+GET    /sweets              - Get all sweets
+GET    /sweets/search       - Search sweets by name/description
+GET    /sweets/:id          - Get sweet by ID
+POST   /sweets              - Create new sweet (Admin only)
+PUT    /sweets/:id          - Update sweet (Admin only)
+DELETE /sweets/:id          - Delete sweet (Admin only)
+```
+
+### Purchase Endpoints
+```
+GET    /purchases           - Get all purchases
+POST   /purchases           - Create new purchase
+GET    /purchases/:id       - Get purchase by ID
+```
+
+### Restock Endpoints
+```
+GET    /restocks            - Get all restocks
+POST   /restocks            - Create restock
+GET    /restocks/:id        - Get restock by ID
+```
+
+### Example API Calls
+
+**Search Sweets:**
+```bash
+curl "https://sweet-shop-api-prod.railway.app/api/sweets/search?q=chocolate"
+```
+
+**Create Purchase:**
+```bash
+curl -X POST "https://sweet-shop-api-prod.railway.app/api/purchases" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"sweetId": 1, "quantity": 5, "customerName": "John"}'
+```
 
 ---
 
